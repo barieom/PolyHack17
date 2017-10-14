@@ -53,8 +53,14 @@
   <ItemGroup>
      <Compile Include="Assets\Castle.cs" />
      <Compile Include="Assets\CastleModule.cs" />
+     <Compile Include="Assets\EnemyCombat.cs" />
      <Compile Include="Assets\EnemyController.cs" />
+     <Compile Include="Assets\EnemyMovement.cs" />
+     <Compile Include="Assets\Health.cs" />
+     <Compile Include="Assets\HitboxStartCombat.cs" />
      <Compile Include="Assets\Player.cs" />
+     <Compile Include="Assets\PlayerCombat.cs" />
+     <Compile Include="Assets\PlayerMovement.cs" />
      <Compile Include="Assets\Sprite Enemy\Enemy.cs" />
      <Compile Include="Assets\Sprite Enemy\Health.cs" />
      <Compile Include="Assets\Sprite Enemy\Movement.cs" />
