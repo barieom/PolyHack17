@@ -20,16 +20,13 @@ public class CastleModule {
 	}
 }
 
-public class CastleModule_ProjectileModule : CastleModule {
+private class CastleModule_ProjectileModule : CastleModule {
 	//catapult, oil, archer, ice mage
-
-	public struct moduleType {
-		List<Vector2> positions;
-	};
-
-	static moduleType thismodule;
 	public enum moduleTypes {catapult, oil, archer, icemage};
-	moduleTypes mType;
+
+	static moduleTypes mType;
+	static List<Vector2> positions;
+
 	public void createProjectile(/*id of Player Spawning Proj & Speed Vector*/)
 	{
 		if (mType == moduleTypes.catapult) {
@@ -58,6 +55,22 @@ public class CastleModule_ProjectileModule : CastleModule {
 			toRemove.RemoveAt (0);
 		}
 	}
+}
+
+public class CastleModule_ProjectileModule_Catapult : CastleModule_ProjectileModule {
+	mType = 
+}
+
+public class CastleModule_ProjectileModule_Oil : CastleModule_ProjectileModule {
+
+}
+
+public class CastleModule_ProjectileModule_Archer : CastleModule_ProjectileModule {
+
+}
+
+public class CastleModule_ProjectileModule_Icemage : CastleModule_ProjectileModule {
+
 }
 
 public class CastleModule_BaseModule : CastleModule {
