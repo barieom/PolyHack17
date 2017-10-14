@@ -8,33 +8,35 @@ public class Castle : MonoBehaviour {
 	public Health castleHealth;
 
 	List<Object> modules;
-	List<CastleModule_TopModule> top_mod;
-	List<CastleModule_CoreModule> core_mod;
-	List<CastleModule_BaseModule> base_mod;
+	//Behind castle is first, then bottom module, then core modules, then top module.
 
-	// Use this for initialization
 	void Start () {
-		//Build castle on screen
+		//Build castle on screen with default modules
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (castle_health.isDead ()) {
 			//Trigger game over sequence
 		}
+		for (int i = 0; i < modules.Count; i++) {
+			modules [i].updateModule ();
+		}
 	}
 
-	void movePlayer(Player pl, uint module_index, uint destination_index)
+	void movePlayer(ref Player pl, uint current_index, uint destination_index)
 	{
-
+		modules [current_index].players.Remove (pl.uniqueId);
+		modules [current_index].toRemove.Add (pl.uniqueId);
+		modules [destination_index].players.Add (pl.uniqueId, &pl);
+		pl.moduleIndex = destination_index;
 	}
 
-	void swapModule<T>(List<T> module_list, uint module_index, T replacement_module)
+	void swapModule(uint module_index, Object replacement_module)
 	{
-		if (module_list [module_index].players.Count == 0) {
-			if (!module_list [module_index].onCooldown ()) {
-				module_list.RemoveAt (module_index);
-				module_list.Insert (module_index, replacement_module);
+		if (modules[module_index].players.Count == 0) {
+			if (!modules[module_index].onCooldown ()) {
+				modules.RemoveAt (module_index);
+				modules.Insert (module_index, replacement_module);
 			} else {
 				//Trigger "Module to be replaced is on cooldown." dialogue.
 			}
